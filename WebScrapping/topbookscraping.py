@@ -23,4 +23,5 @@ for n in range(1,51):
             book_title = book.select('a')[1]['title']
             two_star_titles.append(book_title)
 
-print(two_star_titles)
+for i in two_star_titles:
+    print(i)
