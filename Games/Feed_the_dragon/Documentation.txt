@@ -9,7 +9,7 @@ dragon. The initial lives of the dragon are 5, and life lost with each
 coin dragon fails to eat.
 
 Please copy and paste the link below in the browser to play the game.
-https://replit.com/@SavanPatel7/FeedTheDragon?v=1
+https://replit.com/@SavanPatel7/FeedTheDragon?embed=1
 
 This script for the game is pretty generic, first the scrip defines the clock and
 FPS for the game, which are 60 FPS. After that the script defines some default variables
