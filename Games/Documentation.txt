@@ -1,0 +1,28 @@
+This directory is created to show some python work using pygame module. This project
+aims to build some basic arcade games using the pygame functions and classes.
+
+Startup Directory:
+The first directory is called startup which consist of various training. This module
+shows that how to create a display surface for a game to load, how to program game loop,
+how to import images, sound effect and text. It also contains how to draw various shapes,
+using various methods. This module shows that how to use inbuilt pygame clock to set the
+refresh rate. This directory go overs how include the motion to the surface and how to
+control it with key binding or mouse movement.
+
+    List of python files:
+        display_surface.py
+        adding_sound.py
+        blitting_text.py
+        collision_detection.py
+        drawing_display.py
+        object_movement.py
+        continuous_movement.py
+        images.py
+
+    List of supporting files:
+        music.wav
+        sound_1.wav
+        dragon_left.png
+        dragon_right.png
+        AttackGraffiti.ttf
+

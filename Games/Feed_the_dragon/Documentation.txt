@@ -1,0 +1,51 @@
+This game is developed using the pythons pygame library. The
+content is downloaded from the internet. The contents are AttackGraffiti
+text, dragon image, and coin image.
+
+The gameplay of the Feed The Dragon is the dragon catches the coin
+coming to it and based on the number of the coin the dragon eats
+the score increase by one. Each missing coin takes one life from the
+dragon. The initial lives of the dragon are 5, and life lost with each
+coin dragon fails to eat.
+
+Please copy and paste the link below in the browser to play the game.
+https://replit.com/@SavanPatel7/FeedTheDragon?v=1
+
+This script for the game is pretty generic, first the scrip defines the clock and
+FPS for the game, which are 60 FPS. After that the script defines some default variables
+for the game. Here is the list of the constant variables.
+player_starting_life = 5
+player_velocity = 15
+coin_starting_velocity = 5
+coin_acceleration = 0.5
+buffer_distance = 100
+score = 0
+
+After that the script defines the colors which will be used frequently. The script
+defines a few text for the HUD, game over and continue. Here are the list of the text
+defined in the script.
+score_text = Score: 00
+title_text = Feed the Dragon
+lives_text = Player Lives: 5
+game_over_text = Game Over
+continue_text = Press any key to Continue
+
+The script imports the music which will be played while playing the game. The music
+does not have any copyright. There are three music tracks are imported from the directory.
+Those tracks are:
+coin_sound = coin_sound.wav (played when the dragon eats the coin)
+miss_sound = miss_sound.wav (played when the dragon misses the coin)
+background music = ftd_background_music.wav (This track will be played while the game is played)
+
+
+After that the game script start the main game loop using while. It based on the binary
+variable running. The loop keep tracks of all the events and quit the game window when user hit
+quit. The user can start playing the game and has the player icon has movement is restricted to the
+y-axis only. The coin uses the random module to spawn randomly in the game screen.
+
+The scrip uses the pygame method to detect whether coin rectangle and player icon rectangle
+touches each other. Once they touch, the script increases the score or if dragon fails to catch
+the coin, the script decrease a life. Once the lives are over, the game is over and gives the prompt
+that lets user continue the game pressing any key.
+
+Thank you. Hope you will enjoy the arcade game.

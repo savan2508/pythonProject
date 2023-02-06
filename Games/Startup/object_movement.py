@@ -37,6 +37,7 @@ while run_game:
             dragon_rect.centerx = mouse_x
             dragon_rect.centery = mouse_y
 
+        # This conditional formatting check for whether the user pressed a mouse left key and using mouse motion
         if event.type == pygame.MOUSEMOTION and event.buttons[0] == 1:
             mouse_x = event.pos[0]
             mouse_y = event.pos[1]
