@@ -3,7 +3,8 @@ import bs4
 import lxml
 
 """ This script do the web scrapping from the toscrape.com website and download
-a list of the books that has a two star rating"""
+a list of the books that has a two star rating
+"""
 
 base_url = 'http://books.toscrape.com/catalogue/page-{}.html' #get website url
 
