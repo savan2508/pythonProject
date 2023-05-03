@@ -16,7 +16,7 @@ clock = pygame.time.Clock()
 
 
 # Define classes
-class Game():
+class Game:
     """A class to help control and update gameplay"""
 
     def __init__(self, player, alien_group, player_bullet_group, alien_bullet_group):
