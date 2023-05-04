@@ -8,7 +8,7 @@ A simple game where the player must catch specific monsters to score points and 
 
 ## Installation
 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/Monster-Wrangle.git
+git clone https://github.com/savan2508/pythonProject/tree/master/Games/MonsterWrangler
 2. Install Pygame
 3. pip install pygame
 4. Run the game
