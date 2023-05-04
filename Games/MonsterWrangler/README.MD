@@ -34,4 +34,4 @@ The "check_collision()" function checks for collisions between the player and th
 
 Overall, the code defines a functional game with basic features, such as collision detection, scoring, and player lives.
 # Credits
-This game was created by [Your Name] for [assignment or personal project]. The game uses sound effects from [source] and monster images from [source].
+This game was created by Savan Patel for educational purpose. 
