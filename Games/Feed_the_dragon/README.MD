@@ -12,10 +12,10 @@ To run the game, you need to have Python 3 and Pygame installed on your system.
 pip install pygame 
 
 ## Running the Game
-* Please download feed_the_dragon.exe file and double click to run the file and start playing. 
-* To run the game, navigate to the game's directory and execute the following command in your terminal:
+* Please download all the files and double click on feed_the_dragon.exe to run the file and start playing. 
+* Alternatively, to run the game, navigate to the game's directory and execute the following command in your terminal:
 
-python feed_the_dragon.py
+python main.py
 ## How to Play
 The game is simple to play. Move the dragon up and down using the up and down arrow keys on your keyboard. The goal is to catch as many coins as possible while avoiding missing them. Every time you miss a coin, you lose a life. If you lose all your lives, the game is over. Your score increases by 1 every time you catch a coin.
 
