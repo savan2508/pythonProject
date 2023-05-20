@@ -12,6 +12,7 @@ To run the game, you need to have Python 3 and Pygame installed on your system.
 pip install pygame 
 
 ## Running the Game
+* Please download feed_the_dragon.exe file and double click to run the file and start playing. 
 * To run the game, navigate to the game's directory and execute the following command in your terminal:
 
 python feed_the_dragon.py
