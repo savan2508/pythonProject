@@ -883,7 +883,7 @@ class Ruby(pygame.sprite.Sprite):
         self.portal_group = portal_group
 
         # Load sounds
-        self.portal_sound = pygame.mixer.Sound("sounds/portal_sound.wav")
+        self.portal_sound = pygame.mixer.Sound(resource_path("sounds/portal_sound.wav"))
 
         # Kinematics vectors
         self.position = vector(self.rect.x, self.rect.y)
