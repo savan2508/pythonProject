@@ -1,4 +1,6 @@
+import os
 import random
+import sys
 
 import pygame
 
@@ -18,19 +20,32 @@ FPS = 60
 clock = pygame.time.Clock()
 
 
+def resource_path(relative_path):
+    """ Get an absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEI PASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
 # Create a function to append the files for the animation
 def append_animation(sprite_group, filepath='', filename='', zero=False, extension='.png', image_size=(32, 32),
                      starting_value=1, number_of_files=10, increment=1):
     if not zero:
         for i in range(starting_value, number_of_files + 1, increment):
             sprite_group.append(
-                pygame.transform.scale(pygame.image.load(filepath + filename + str(i) + extension), image_size))
+                pygame.transform.scale(pygame.image.load(resource_path(filepath + filename + str(i) + extension)),
+                                       image_size))
     else:
         for i in range(starting_value, number_of_files + 1, increment):
             if i < 10:
                 i = '0' + str(i)
             sprite_group.append(
-                pygame.transform.scale(pygame.image.load(filepath + filename + i + extension), image_size))
+                pygame.transform.scale(pygame.image.load(resource_path(filepath + filename + str(i) + extension)),
+                                       image_size))
 
 
 # Define classes
@@ -51,13 +66,13 @@ class Game():
         self.zombie_creation_time = self.STARTING_ZOMBIE_CREATION_TIME
 
         # Set Fonts
-        self.title_font = pygame.font.Font("fonts/Poultrygeist.ttf", 48)
-        self.HUD_font = pygame.font.Font("fonts/Pixel.ttf", 24)
+        self.title_font = pygame.font.Font(resource_path("fonts/Poultrygeist.ttf"), 48)
+        self.HUD_font = pygame.font.Font(resource_path("fonts/Pixel.ttf"), 24)
 
         # Set sounds
-        self.lost_ruby_sound = pygame.mixer.Sound("sounds/lost_ruby.wav")
-        self.ruby_pickup_sound = pygame.mixer.Sound("sounds/ruby_pickup.wav")
-        pygame.mixer.music.load("sounds/level_music.wav")
+        self.lost_ruby_sound = pygame.mixer.Sound(resource_path("sounds/lost_ruby.wav"))
+        self.ruby_pickup_sound = pygame.mixer.Sound(resource_path("sounds/ruby_pickup.wav"))
+        pygame.mixer.music.load(resource_path("sounds/level_music.wav"))
 
         # Attach groups and sprites
         self.player = player
@@ -278,19 +293,19 @@ class Tile(pygame.sprite.Sprite):
         # Load in the correct image and add it to the correct subgroup
         # Dirt
         if image_int == 1:
-            self.image = pygame.transform.scale(pygame.image.load("images/tiles/Tile (1).png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/tiles/Tile (1).png")), (32, 32))
         # Platform tiles
         elif image_int == 2:
-            self.image = pygame.transform.scale(pygame.image.load("images/tiles/Tile (2).png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/tiles/Tile (2).png")), (32, 32))
             sub_group.add(self)
         elif image_int == 3:
-            self.image = pygame.transform.scale(pygame.image.load("images/tiles/Tile (3).png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/tiles/Tile (3).png")), (32, 32))
             sub_group.add(self)
         elif image_int == 4:
-            self.image = pygame.transform.scale(pygame.image.load("images/tiles/Tile (4).png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/tiles/Tile (4).png")), (32, 32))
             sub_group.add(self)
         elif image_int == 5:
-            self.image = pygame.transform.scale(pygame.image.load("images/tiles/Tile (5).png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/tiles/Tile (5).png")), (32, 32))
             sub_group.add(self)
 
         # Add every tile to the main group
@@ -392,10 +407,10 @@ class Player(pygame.sprite.Sprite):
         self.animate_fire = False
 
         # Load sounds
-        self.jump_sound = pygame.mixer.Sound("sounds/jump_sound.wav")
-        self.slash_sound = pygame.mixer.Sound("sounds/slash_sound.wav")
-        self.portal_sound = pygame.mixer.Sound("sounds/portal_sound.wav")
-        self.hit_sound = pygame.mixer.Sound("sounds/player_hit.wav")
+        self.jump_sound = pygame.mixer.Sound(resource_path("sounds/jump_sound.wav"))
+        self.slash_sound = pygame.mixer.Sound(resource_path("sounds/slash_sound.wav"))
+        self.portal_sound = pygame.mixer.Sound(resource_path("sounds/portal_sound.wav"))
+        self.hit_sound = pygame.mixer.Sound(resource_path("sounds/player_hit.wav"))
 
         # Kinematics vectors
         self.position = vector(x, y)
@@ -547,9 +562,9 @@ class Bullet(pygame.sprite.Sprite):
 
         # Load image and get rect
         if player.velocity.x > 0:
-            self.image = pygame.transform.scale(pygame.image.load("images/player/slash.png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/player/slash.png")), (32, 32))
         else:
-            self.image = pygame.transform.scale(pygame.image.load("images/player/slash.png"), (32, 32))
+            self.image = pygame.transform.scale(pygame.image.load(resource_path("images/player/slash.png")), (32, 32))
             self.VELOCITY = -1 * self.VELOCITY
 
         self.rect = self.image.get_rect()
@@ -680,9 +695,9 @@ class Zombies(pygame.sprite.Sprite):
         self.animate_rise = False
 
         # Load Sounds
-        self.hit_sound = pygame.mixer.Sound("sounds/zombie_hit.wav")
-        self.kick_sound = pygame.mixer.Sound("sounds/zombie_kick.wav")
-        self.portal_sound = pygame.mixer.Sound("sounds/portal_sound.wav")
+        self.hit_sound = pygame.mixer.Sound(resource_path("sounds/zombie_hit.wav"))
+        self.kick_sound = pygame.mixer.Sound(resource_path("sounds/zombie_kick.wav"))
+        self.portal_sound = pygame.mixer.Sound(resource_path("sounds/portal_sound.wav"))
 
         # Kinematics vectors
         self.position = vector(self.rect.x, self.rect.y)
@@ -802,13 +817,14 @@ class RubyMaker(pygame.sprite.Sprite):
         self.ruby_sprites = []
 
         # Rotating
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile000.png"), (64, 64)))
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile001.png"), (64, 64)))
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile002.png"), (64, 64)))
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile003.png"), (64, 64)))
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile004.png"), (64, 64)))
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile005.png"), (64, 64)))
-        self.ruby_sprites.append(pygame.transform.scale(pygame.image.load("images/ruby/tile006.png"), (64, 64)))
+        append_animation(sprite_group=self.ruby_sprites,
+                         filepath="images/ruby/",
+                         filename="tile0",
+                         zero=True,
+                         extension=".png",
+                         image_size=(64, 64),
+                         starting_value=0,
+                         number_of_files=6)
 
         # Load image and get rect
         self.current_sprite = 0
@@ -943,57 +959,23 @@ class Portal(pygame.sprite.Sprite):
         # Portal animation
         if color == "green":
             # Green portal
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile000.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile001.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile002.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile003.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile004.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile005.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile006.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile007.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile008.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile009.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile010.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile011.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile012.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile013.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile014.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile015.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile016.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile017.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile018.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile019.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile020.png"), (72, 72)))
-            self.portal_sprites.append(
-                pygame.transform.scale(pygame.image.load("images/portals/green/tile021.png"), (72, 72)))
+            append_animation(sprite_group=self.portal_sprites,
+                             filepath="images/portals/green/",
+                             filename="tile0",
+                             zero=True,
+                             extension=".png",
+                             image_size=(72, 72),
+                             starting_value=1,
+                             number_of_files=21)
+
         else:
             # Purple Portal
             file_path = "images/portals/purple/tile0"
             for i in range(22):
                 if i < 10:
                     i = "0" + str(i)
-                portal_sprite = pygame.transform.scale(pygame.image.load(file_path + str(i) + ".png"), (72, 72))
+                portal_sprite = pygame.transform.scale(pygame.image.load(resource_path(file_path + str(i) + ".png")),
+                                                       (72, 72))
                 self.portal_sprites.append(portal_sprite)
 
         # Load a image and get a rect
@@ -1113,7 +1095,7 @@ for i in range(len(tile_map)):
             my_player_group.add(my_player)
 
 # Load in a background image
-background_image = pygame.transform.scale(pygame.image.load("images/background.png"), (1280, 736))
+background_image = pygame.transform.scale(pygame.image.load(resource_path("images/background.png")), (1280, 736))
 background_image_rect = background_image.get_rect()
 background_image_rect.topleft = (0, 0)
 

@@ -13,15 +13,16 @@ As the nights progress, the game becomes increasingly difficult. The zombies bec
 ## Installation
 * To play Zombie Knight on your local machine, follow these steps:
 
-* Download the repository to your local machine. 
+  * Download the repository to your local machine. 
 
-* Navigate to the project directory and Install the required dependencies.
+  * Navigate to the project directory and Install the required dependencies.
 
-* Run the game:
-  * You can click on the exe file to run the game directly on your local machine. 
-  * You can also run the main.py file in your terminal after changing the directory to the game file. 
+  * Run the game:
+    * You can click on the exe file to run the game directly on your local machine. 
+    * You can also run the main.py file in your terminal after changing the directory to the game file. 
   
 * Note: Ensure that you have Python and the necessary dependencies installed, such as Pygame, before running the game.
+* You can play directly by downloading the Zombie Knight.exe file. Open the file and play. No installation required. 
 
 ## Controls
 * Arrow keys: Move the knight left or right, and up arrow to jump.
